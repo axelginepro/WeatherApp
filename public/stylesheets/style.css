@@ -1,0 +1,36 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#map {
+  height: 300px;
+  width: 100%;
+}
+
+#input-search {
+  padding: 5px 15px 5px 15px;
+}
+
+.fa-times-circle{
+  color: #F3C10A;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-btn {
+  padding: 0;
+  border: none;
+}
+
+.weather-img {
+  width: 25px;
+}

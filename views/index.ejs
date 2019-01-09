@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/regular.css" integrity="sha384-OEIzojYBMrmz48aIjVQj7VG38613/sxpP58OW9h5zBYC7biGFlv9tyu5kWmaAYlF" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css" integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="offset-lg-6 col-12">
+
+          <form class="" action="/add-city" method="post">
+            <span>Ville</span>
+            <input id="input-search" type="text" name="city" placeholder="Paris, Lyon .." value="">
+            <button type="submit" class="btn btn-warning">Enregister</button>
+          </form>
+
+        </div>
+        <div class="col-lg-6 col-12">
+          <div id="map"></div>
+        </div>
+        <div class="col-lg-6 col-12">
+          <ul class="list-group">
+
+            <%
+            for (var i = 0; i < cityList.length; i++) {
+            %>
+
+            <li class="list-group-item" data-lon="<%= cityList[i].lon %>" data-lat="<%= cityList[i].lat %>">
+              <div class="row">
+                <span class="col-1">
+                  <%= cityList[i].name %>
+                </span>
+                <span class="offset-1 col-1">
+                  <img src="<%= cityList[i].img %>" alt="" class="weather-img">
+                </span>
+                <span class=" offset-1 col-3">
+                  <%= cityList[i].status %>
+                </span>
+                <div class="offset-1 col-1 badge badge-pill badge-warning center">
+                  <%= cityList[i].tempMin %>
+                </div>
+                <span class="col-1 badge badge-pill badge-secondary center">
+                  <%= cityList[i].tempMax %>
+                </span>
+                <div class="offset-1 col-1">
+                  <form action="/delete-city" method="post">
+                    <input type="hidden" name="id" value="<%= cityList[i]._id %>">
+                    <button type="submit" name="button" class="delete-btn">
+                      <i class="far fa-times-circle"></i>
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </li>
+
+            <%
+            }
+            %>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEeanl7jazVN0yy8OWKy8ArWCuzSXjxOM&callback=initMap"
+    async defer></script>
+    <script src="/javascripts/script.js"></script>
+  </body>
+</html>
